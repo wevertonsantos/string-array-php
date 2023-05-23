@@ -17,14 +17,21 @@ foreach($dados as $nomePaises){
     echo mb_strtoupper($nomePaises['pais']) . PHP_EOL;
 }
 
-// Ordernar por paises que tiver mais medalhas de ouro
+// Ordernar por paises que tiver mais medalhas
 
-function ordernarMedalhasOuro(array $item1, array $item2) : int{
-  return $item1['medalhas']['ouro'] <= $item2['medalhas']['ouro'];
+function ordernarMedalhas(array $item1, array $item2) : int{
+  $medalhas1 = $item1['medalhas'];
+  $medalhas2 = $item2['medalhas'];
+
+  return $medalhas2['ouro'] - $medalhas1['ouro'] !== 0 ?
+         $medalhas2['ouro'] - $medalhas1['ouro'] :
+         ($medalhas2['prata'] - $medalhas1['prata'] !== 0 ?
+         $medalhas2['prata'] - $medalhas1['prata'] :
+         $medalhas2['bronze'] - $medalhas2['bronze']);
 }
 
-usort($dados, 'ordernarMedalhasOuro');
+usort($dados, 'ordernarMedalhas');
 
 foreach($dados as $paises){
-  echo $paises['pais'] . ' ' . $paises['medalhas']['ouro'] . PHP_EOL;
+  echo $paises['pais'] . PHP_EOL;
 }
