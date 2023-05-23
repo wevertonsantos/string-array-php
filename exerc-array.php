@@ -16,3 +16,15 @@ echo 'Número de paises participantes = ' . $numeroDePaises . PHP_EOL;
 foreach($dados as $nomePaises){
     echo mb_strtoupper($nomePaises['pais']) . PHP_EOL;
 }
+
+// Ordernar por paises que tiver mais medalhas de ouro
+
+function ordernarMedalhasOuro(array $item1, array $item2) : int{
+  return $item1['medalhas']['ouro'] <= $item2['medalhas']['ouro'];
+}
+
+usort($dados, 'ordernarMedalhasOuro');
+
+foreach($dados as $paises){
+  echo $paises['pais'] . ' ' . $paises['medalhas']['ouro'] . PHP_EOL;
+}
