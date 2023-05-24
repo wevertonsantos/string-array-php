@@ -13,12 +13,10 @@ echo 'Número de paises participantes = ' . $numeroDePaises . PHP_EOL;
 
 // Fazer com que seus nomes fiquem em letras maiúsculas
 
-$letrasMaiusculas = array_map(function($dado){
+$dados = array_map(function($dado){
   $dado['pais'] = mb_strtoupper($dado['pais']);
   return $dado;
 }, $dados);
-
-var_dump($letrasMaiusculas);
 
 // Ordernar por paises que tiver mais medalhas
 
