@@ -13,9 +13,12 @@ echo 'Número de paises participantes = ' . $numeroDePaises . PHP_EOL;
 
 // Fazer com que seus nomes fiquem em letras maiúsculas
 
-foreach($dados as $nomePaises){
-    echo mb_strtoupper($nomePaises['pais']) . PHP_EOL;
-}
+$letrasMaiusculas = array_map(function($dado){
+  $dado['pais'] = mb_strtoupper($dado['pais']);
+  return $dado;
+}, $dados);
+
+var_dump($letrasMaiusculas);
 
 // Ordernar por paises que tiver mais medalhas
 
@@ -32,6 +35,4 @@ function ordernarMedalhas(array $item1, array $item2) : int{
 
 usort($dados, 'ordernarMedalhas');
 
-foreach($dados as $paises){
-  echo $paises['pais'] . PHP_EOL;
-}
+var_dump($dados);
