@@ -50,7 +50,11 @@ $dados = array_map(function($dado){
 }, $dados);
 ```
 
-### Função usort - com regras de verificação: Ordernar por quantidade de medalhas ouro, caso haja empate comparar as de prata, caso haja empate comparar as de bronze.
+### Função usort com regras de verificação:
+
+- Pelo país que tiver mais medalhas de ouro
+- Em caso de empate, pelo país que tiver mais medalhas de prata
+- Em caso de empate, pelo país que tiver mais medalhas de bronze
 
 ```
 function ordernarMedalhas(array $item1, array $item2) : int{
