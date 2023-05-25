@@ -37,6 +37,12 @@ Conta o número de itens em um array PHP:
 $numeroDePaises = count($dados);
 echo 'Número de paises participantes = ' . $numeroDePaises . PHP_EOL;
 ```
+Resultado:
+```
+Número de paises participantes = 4
+```
+
+
 ### Função array_map
 
 - Fazer com que seus nomes fiquem em letras maiúsculas;
@@ -49,8 +55,17 @@ $dados = array_map(function($dado){
   return $dado;
 }, $dados);
 ```
+Resultado:
+```
+COSTA RICA
+ESTADOS UNIDOS
+TRINDADE E TOBAGO
+BRASIL
+```
 
 ### Função usort com regras de verificação:
+
+Essa função irá ordenar um array pelos valores usando uma função de classificação definida pelo usuário.
 
 - Pelo país que tiver mais medalhas de ouro
 - Em caso de empate, pelo país que tiver mais medalhas de prata
@@ -68,3 +83,30 @@ function ordernarMedalhas(array $item1, array $item2) : int{
          $medalhas2['bronze'] - $medalhas2['bronze']);
 }
 ```
+Resultado:
+```
+COSTA RICA
+ESTADOS UNIDOS
+TRINDADE E TOBAGO
+BRASIL
+```
+
+### Função array_reduce
+
+A função array_reduce tem como objetivo reduzir o array a um único valor utilizando alguma operação aritmética para tal.
+
+- Listar o número de medalhas distribuídas na competição
+
+````
+$totalMedalhas = array_reduce($dados, function ($total, $dado){
+  $medalhas = $dado['medalhas'];
+  
+  $total += $medalhas['ouro'];
+  $total += $medalhas['bronze'];
+  $total += $medalhas['prata'];
+  return $total;
+}, 0);
+````
+Resultado:
+````
+Total medalhas = 47
