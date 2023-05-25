@@ -110,3 +110,8 @@ $totalMedalhas = array_reduce($dados, function ($total, $dado){
 Resultado:
 ````
 Total medalhas = 47
+````
+
+### Função array_filter
+
+Itera sobre cada valor de array passando-os para a função callback . Se a função callback retornar true, o valor atual de array é retornado no array resultante. 
