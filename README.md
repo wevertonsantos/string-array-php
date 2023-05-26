@@ -112,6 +112,14 @@ Resultado:
 Total medalhas = 47
 ````
 
-### Função array_filter
+### Função array_filter e strpos
 
-Itera sobre cada valor de array passando-os para a função callback . Se a função callback retornar true, o valor atual de array é retornado no array resultante. 
+array_filter = Itera sobre cada valor de array passando-os para a função callback. Se a função callback retornar true, o valor atual de array é retornado no array resultante. 
+
+strpos = em PHP é usada para encontrar a posição da primeira ocorrência de uma string dentro de outra string.
+
+````
+$paisesSemEspaco = array_filter($dados, function($dado){  
+    return strpos($dado['pais'], ' ') == false;
+});
+````
