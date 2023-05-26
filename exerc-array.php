@@ -8,7 +8,6 @@ $dados = json_decode($json, true);
 // Listar o número de países participantes
 
 $numeroDePaises = count($dados);
-
 echo 'Número de paises participantes = ' . $numeroDePaises . PHP_EOL;
 
 // Fazer com que seus nomes fiquem em letras maiúsculas
@@ -34,3 +33,24 @@ function ordernarMedalhas(array $item1, array $item2) : int{
 usort($dados, 'ordernarMedalhas');
 
 var_dump($dados);
+
+// Listar o número de medalhas distribuídas na competição
+
+$totalMedalhas = array_reduce($dados, function ($total, $dado){
+  $medalhas = $dado['medalhas'];
+  
+  $total += $medalhas['ouro'];
+  $total += $medalhas['bronze'];
+  $total += $medalhas['prata'];
+  return $total;
+}, 0);
+
+var_dump("Total medalhas = $totalMedalhas");
+
+// Filtando array para paises que não tem espaço
+
+$paisesSemEspaco = array_filter($dados, function($dado){  
+    return strpos($dado['pais'], ' ') == false;
+});
+
+print_r($paisesSemEspaco);
