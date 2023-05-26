@@ -114,9 +114,12 @@ Total medalhas = 47
 
 ### Função array_filter e strpos
 
+- Filtrar o array apenas para paises que não tem espaço
+
 array_filter = Itera sobre cada valor de array passando-os para a função callback. Se a função callback retornar true, o valor atual de array é retornado no array resultante. 
 
-strpos = em PHP é usada para encontrar a posição da primeira ocorrência de uma string dentro de outra string.
+strpos = em PHP é usada para encontrar a posição da string que você deseja, no caso string dentro de outra string.
+Aqui estou procurando um espaço(' ') dentro de uma posição no array e no filho pais, que se caso for falsa(houver espaço), retorna apenas paises sem espaço.
 
 ````
 $paisesSemEspaco = array_filter($dados, function($dado){  
